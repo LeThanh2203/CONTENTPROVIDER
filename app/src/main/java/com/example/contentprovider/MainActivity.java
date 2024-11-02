@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn1, btn2;
+    private Button btn1, btn2, btn3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
                 xuLyMoManHinhTinNhan();
             }
         });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                xuLyMoManHinhCuocgoi();
+            }
+        });
     }
 
     private void xuLyMoManHinhDanhBa(){
@@ -43,9 +49,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, Message_Layout.class);
         startActivity(intent);
     }
+    private void xuLyMoManHinhCuocgoi() {
+        Intent intent = new Intent(MainActivity.this, Calllog_Layout.class);
+        startActivity(intent);
+    }
 
     private void addControl(){
         btn1 = findViewById(R.id.btncontact);
         btn2 = findViewById(R.id.btnmessage);
+        btn3 = findViewById(R.id.btncalllog);
     }
 }
