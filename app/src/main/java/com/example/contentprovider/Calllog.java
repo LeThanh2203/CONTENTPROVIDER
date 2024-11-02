@@ -1,14 +1,16 @@
 package com.example.contentprovider;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Calllog implements Serializable {
     private String number;
     private String type;
-    private String date;
+    private Date date; // Change type from String to Date
     private String duration;
 
-    public Calllog(String number, String type, String date, String duration) {
+    public Calllog(String number, String type, Date date, String duration) { // Change constructor parameter type
         this.number = number;
         this.type = type;
         this.date = date;
@@ -34,11 +36,11 @@ public class Calllog implements Serializable {
         this.type = type;
     }
 
-    public String getDate() {
+    public Date getDate() { // Change return type to Date
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) { // Change parameter type to Date
         this.date = date;
     }
 
@@ -73,9 +75,10 @@ public class Calllog implements Serializable {
 
     @Override
     public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Format to show only date
         return "Số điện thoại: " + number + "\n" +
                 "Loại cuộc gọi: " + getCallTypeLabel() + "\n" +
-                "Ngày gọi: " + date + "\n" +
+                "Ngày gọi: " + sdf.format(date) + "\n" + // Use formatted date
                 "Thời lượng: " + duration;
     }
 }

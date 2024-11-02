@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Calllog_Layout extends AppCompatActivity {
 
@@ -53,10 +54,11 @@ public class Calllog_Layout extends AppCompatActivity {
                     if (viTriSoDienThoai != -1 && viTriLoaiCuocGoi != -1 && viTriNgayGoi != -1 && viTriThoiLuong != -1) {
                         String soDienThoai = cursor.getString(viTriSoDienThoai);
                         String loaiCuocGoi = cursor.getString(viTriLoaiCuocGoi);
-                        String ngayGoi = cursor.getString(viTriNgayGoi);
+                        long ngayGoiMillis = cursor.getLong(viTriNgayGoi); // Get the date as a long
+                        Date ngayGoi = new Date(ngayGoiMillis); // Convert to Date
                         String thoiLuong = cursor.getString(viTriThoiLuong);
 
-                        Calllog callLogEntry = new Calllog(soDienThoai, loaiCuocGoi, ngayGoi, thoiLuong);
+                        Calllog callLogEntry = new Calllog(soDienThoai, loaiCuocGoi, ngayGoi, thoiLuong); // Pass Date object
                         callLogList.add(callLogEntry);
                     }
                 }
